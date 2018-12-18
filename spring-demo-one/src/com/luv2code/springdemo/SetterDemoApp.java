@@ -2,17 +2,16 @@ package com.luv2code.springdemo;
 
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
-public class HelloSpringApp {
+public class SetterDemoApp {
 
     public static void main(String[] args) {
-        
-        System.out.println("Using HelloSpringApp");
-
         ClassPathXmlApplicationContext context = new ClassPathXmlApplicationContext("applicationContext.xml");
+        CricketCoach theCoach = context.getBean("myCricketCoach", CricketCoach.class);
 
-        Coach theCoach = context.getBean("myCoach", Coach.class);
         System.out.println(theCoach.getDailyWorkout());
         System.out.println(theCoach.getDailyFortune());
+        System.out.println("The email address is: " + theCoach.getEmailAddress());
+        System.out.println("The team name is: " + theCoach.getTeam());
 
         context.close();
     }
