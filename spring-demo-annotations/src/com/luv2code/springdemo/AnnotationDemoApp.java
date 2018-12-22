@@ -23,6 +23,11 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
         --> https://docs.spring.io/spring/docs/4.2.x/spring-framework-reference/html/beans.html
 */
 
+/*
+    In contrast to the other scopes, Spring does not manage the complete lifecycle of a
+    prototype bean
+*/
+
 
 public class AnnotationDemoApp {
     public static void main(String[] args) {

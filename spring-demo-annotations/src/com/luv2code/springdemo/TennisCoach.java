@@ -27,12 +27,12 @@ public class TennisCoach implements Coach {
         System.out.println("TennisCoach default constructor");
     }
 
-    @PostConstruct
+    @PostConstruct // not working java 9+
     public void doMyStartupStuff() {
         System.out.println("TennisCoach: inside of doMyStartupStuff()");
     }
 
-    @PreDestroy
+    @PreDestroy // not working java 9+
     public void doMyCleanupStuff() {
         System.out.println("TennisCoach: inside of doMyCleanupStuff()");
     }
