@@ -1,25 +1,25 @@
 package com.luv2code.hibernate.demo.entity;
 
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="instructor")
-public class Instructor {
+@Table(name="student")
+public class Student {
 
 	@Id
-	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	@GeneratedValue(strategy=GenerationType.IDENTITY) // standard not necessary
 	@Column(name="id")
 	private int id;
 	
@@ -32,21 +32,21 @@ public class Instructor {
 	@Column(name="email")
 	private String email;
 	
-	@OneToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="instructor_detail_id")
-	private InstructorDetail instructorDetail;
-	
-	@OneToMany(mappedBy="instructor"
-			, cascade= {CascadeType.PERSIST
-					, CascadeType.DETACH
-					, CascadeType.MERGE
-					, CascadeType.REFRESH})
+	@ManyToMany(fetch=FetchType.LAZY,
+		cascade= {CascadeType.PERSIST, CascadeType.DETACH,
+			CascadeType.MERGE, CascadeType.REFRESH})
+	@JoinTable(
+		name="course_student",
+		joinColumns=@JoinColumn(name="student_id"),
+		inverseJoinColumns=@JoinColumn(name="course_id")
+		)
 	private List<Course> courses;
 	
-	public Instructor() {
+	public Student() {
+		
 	}
 
-	public Instructor(String firstName, String lastName, String email) {
+	public Student(String firstName, String lastName, String email) {
 		this.firstName = firstName;
 		this.lastName = lastName;
 		this.email = email;
@@ -84,14 +84,6 @@ public class Instructor {
 		this.email = email;
 	}
 
-	public InstructorDetail getInstructorDetail() {
-		return instructorDetail;
-	}
-
-	public void setInstructorDetail(InstructorDetail instructorDetail) {
-		this.instructorDetail = instructorDetail;
-	}
-
 	public List<Course> getCourses() {
 		return courses;
 	}
@@ -100,17 +92,8 @@ public class Instructor {
 		this.courses = courses;
 	}
 
-	public void add(Course course) {
-		if(courses == null) {
-			courses = new ArrayList<>();
-		}
-		courses.add(course);
-		course.setInstructor(this);
-	}
-	
 	@Override
 	public String toString() {
-		return "Instructor [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email
-				+ ", instructorDetail=" + instructorDetail + "]";
+		return "Student [id=" + id + ", firstName=" + firstName + ", lastName=" + lastName + ", email=" + email + "]";
 	}
 }
