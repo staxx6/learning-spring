@@ -15,11 +15,16 @@ public class AccountDAO {
 		System.out.println(getClass() + ": DOING MY DB WORK: ADDING AN ACCOUNT WITH ACC PARAM");
 	}
 	
-	public void addAccount(Account account, int a) {
+	public Account addAccount(Account account, int a) {
 		System.out.println(getClass() + ": DOING MY DB WORK: ADDING AN ACCOUNT WITH ACC PARAM");
+		return account;
 	}
 	
 	public void addStuff() {
 		System.out.println(getClass() + ": STUFF");
+	}
+	
+	public void crash() throws Exception {
+		throw new Exception("dat fehler hier");
 	}
 }

@@ -28,6 +28,14 @@ public class MainDempApp {
 		Account acc = new Account();
 		acc.setName("AFFE");
 		theAccountDAO.addAccount(acc, 2);
+		System.out.println(acc.getName());
+		
+		try {
+			theAccountDAO.crash();
+			System.out.println("try");
+		} catch(Exception e) {
+			System.out.println("catched");
+		}
 		
 		context.close();
 	}
