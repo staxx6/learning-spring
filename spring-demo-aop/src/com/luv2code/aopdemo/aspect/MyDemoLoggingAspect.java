@@ -6,6 +6,14 @@ import org.aspectj.lang.annotation.Pointcut;
 import org.springframework.core.annotation.Order;
 import org.springframework.stereotype.Component;
 
+
+/*
+ * 
+ *  LOOK AT FILE 3 for more
+ * 
+ * 
+ */
+
 @Aspect
 @Component
 @Order(0)

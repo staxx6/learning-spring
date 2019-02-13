@@ -25,7 +25,9 @@ public class MainDempApp {
 		theMembershipDAO.addAccount();
 		
 		theAccountDAO.addAccount(new Account());
-		theAccountDAO.addAccount(new Account(), 2);
+		Account acc = new Account();
+		acc.setName("AFFE");
+		theAccountDAO.addAccount(acc, 2);
 		
 		context.close();
 	}
