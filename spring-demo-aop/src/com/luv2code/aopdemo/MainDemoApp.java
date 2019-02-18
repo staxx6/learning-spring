@@ -1,13 +1,19 @@
 package com.luv2code.aopdemo;
 
+import java.util.logging.Logger;
+
 import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 
 import com.luv2code.aopdemo.dao.AccountDAO;
 import com.luv2code.aopdemo.dao.MembershipDAO;
 
-public class MainDempApp {
+public class MainDemoApp {
+	
+	private static Logger myLogger = Logger.getLogger(MainDemoApp.class.getName());
 
 	public static void main(String[] args) {
+		
+		myLogger.info("My Logger stuff");
 
 		AnnotationConfigApplicationContext context =
 				new AnnotationConfigApplicationContext(DemoConfig.class);

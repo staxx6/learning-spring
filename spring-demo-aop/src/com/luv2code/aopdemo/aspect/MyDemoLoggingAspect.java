@@ -1,6 +1,7 @@
 package com.luv2code.aopdemo.aspect;
 
 import java.util.List;
+import java.util.logging.Logger;
 
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.ProceedingJoinPoint;
@@ -28,6 +29,8 @@ import com.luv2code.aopdemo.Account;
 @Component
 @Order(0)
 public class MyDemoLoggingAspect {
+	
+	private Logger myLogger = Logger.getLogger(getClass().getName());
 	
 //	@Before("execution(public void add*())")
 //	@Before("execution(public void com.luv2code.aopdemo.dao.AccountDAO.addAccount())")
@@ -83,10 +86,18 @@ public class MyDemoLoggingAspect {
 	
 	@Around("execution(* *(..))")
 	public Object aroundStuff(ProceedingJoinPoint proceedingJoinPoint) throws Throwable {
-		System.out.println("---StartMethode:---");
+		myLogger.info("---StartMethode:---");
 		long begin = System.currentTimeMillis();
-		Object result = proceedingJoinPoint.proceed();
-		System.out.println("---EndMethode after " + (System.currentTimeMillis() - begin) + "ms---");
+
+		Object result;
+		try {
+			result = proceedingJoinPoint.proceed();
+		} catch(Exception ex) {
+			//nothing logging example
+			return ex; // rethrow
+		}
+		
+		myLogger.info("---EndMethode after " + (System.currentTimeMillis() - begin) + "ms---");
 		return result;
 	}
 	
