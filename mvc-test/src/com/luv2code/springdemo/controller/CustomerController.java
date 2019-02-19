@@ -17,6 +17,8 @@ import com.luv2code.springdemo.service.CustomerService;
 @Controller
 @RequestMapping("/customer")
 public class CustomerController {
+
+//	private Logger log = Logger.getLogger(getClass().getName());
 	
 	@Autowired
 	private CustomerService customerService;
@@ -27,7 +29,7 @@ public class CustomerController {
 		List<Customer> theCustomers = customerService.getCustomers();
 		
 		theModel.addAttribute("customers", theCustomers);
-		
+
 		return "list-customers";
 	}
 	
