@@ -1,17 +1,17 @@
 <html>
 
 <head>
-	<title>luv2code LEADERS Home Page</title>
+	<title>luv2code SYSTEMS Home Page</title>
 </head>
 
 <body>
 
-<h2>luv2code LEADERS Home Page</h2>
+<h2>luv2code SYSTEMS Home Page</h2>
 
 <hr>
 
 <p>
-	See you in Brazil ... for our annual Leadership retreat!
+	We have our annual holiday Caribbean cruise coming up. Register now!
 	<br>
 	Keep this trip a secret, don't tell the regular employees LOL :-)
 </p>
