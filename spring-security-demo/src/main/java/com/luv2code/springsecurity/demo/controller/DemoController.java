@@ -8,6 +8,19 @@ public class DemoController {
 
     @GetMapping("/")
     public String showHome() {
+
         return "home";
+    }
+
+    @GetMapping("/home")
+    public String showHomeTwo() {
+
+        return "home";
+    }
+
+    @GetMapping("/leaders")
+    public String showLeaders() {
+
+        return "leaders";
     }
 }
