@@ -36,8 +36,6 @@ public class DemoAppConfig implements WebMvcConfigurer {
 	
 	private Logger logger = Logger.getLogger(getClass().getName());
 	
-	// define a bean for ViewResolver
-
 	@Bean
 	public DataSource myDataSource() {
 		
@@ -46,7 +44,7 @@ public class DemoAppConfig implements WebMvcConfigurer {
 
 		// set the jdbc driver
 		try {
-			myDataSource.setDriverClass("com.mysql.jdbc.Driver");		
+			myDataSource.setDriverClass(env.getProperty("jdbc.driver"));
 		}
 		catch (PropertyVetoException exc) {
 			throw new RuntimeException(exc);
